@@ -12,7 +12,6 @@ interface ProductCardProps {
   product: Product;
 }
 
-// Simple in-memory cache to avoid duplicate image searches per title
 const imageCache = new Map<string, string | null>();
 
 const ProductCard = ({ product }: ProductCardProps) => {
@@ -24,11 +23,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
     toast.success('Produto adicionado ao carrinho!');
   };
 
-  // imageUrl state: prefer existing imageUrl on product, otherwise try to fetch
   const [imgUrl, setImgUrl] = useState<string | undefined>(product?.imageUrl || undefined);
 
   useEffect(() => {
-    // Hooks must be unconditional; guard inside effect
     if (!product || imgUrl) return;
     const query = product.nome || (product.descricao || '').split(' ')[0] || 'produto';
     if (imageCache.has(query)) {

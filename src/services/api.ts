@@ -73,6 +73,16 @@ export const productApi = {
         if (!response.ok) throw new Error('Failed to create product');
         return response.json();
     },
+
+    remove: async (id: number): Promise<Product> => {
+        const response = await fetch(`${API_BASE_URL}/products/${id}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(null),
+        });
+        if (!response.ok) throw new Error('Failed to delete product');
+        return response.json();
+    },
 };
 
 // Order API

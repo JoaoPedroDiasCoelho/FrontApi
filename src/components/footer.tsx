@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useCart } from '@/hooks/useCart';
 
-export const Footer = () => {
+const Footer = () => {
   const itemCount = useCart((state) => state.itemCount());
 
   return (
@@ -21,3 +21,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;
