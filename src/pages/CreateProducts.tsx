@@ -43,7 +43,7 @@ export const Register: React.FC = () => {
         try {
             const createdProduct = await productApi.create(productToCreate);
             setSuccess(`Produto "${createdProduct.nome}" criado com sucesso! ID: ${createdProduct.id}`);
-            setProductData(initialProductState); 
+            setProductData(initialProductState);
         } catch (err) {
             console.error('Erro ao criar produto:', err);
             setError('Falha ao criar o produto.');
@@ -54,9 +54,11 @@ export const Register: React.FC = () => {
 
 
     return (
-        <div className='flex w-full justify-center items-center min-h-[650px] bg-[#f3f3f3]'>
-            <div className="bg-white shadow-2xl rounded-lg p-10">
-                <h2 className="text-3xl font-bold text-gray-800 mb-6 border-b pb-2 text-center">Cadastrar Novo Produto</h2>
+        <div className="flex w-full justify-center items-center min-h-screen px-4 bg-[#f3f3f3]">
+            <div className="bg-white shadow-2xl rounded-lg w-full max-w-xl p-6 sm:p-10">
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 border-b pb-2 text-center">
+                    Cadastrar Novo Produto
+                </h2>
 
                 {loading && (
                     <div className="p-3 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg">
@@ -75,31 +77,38 @@ export const Register: React.FC = () => {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    
                     <div className="relative">
-                        <input id="nome"
-                        type="text"
-                        name="nome"
-                        value={productData.nome}
-                        onChange={handleChange}
-                        required
-                        placeholder=' '
-                        className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-[#dbdbdb] appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black peer"/>
-                        <label htmlFor="nome" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-black peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Nome do Produto</label>
+                        <input
+                            id="nome"
+                            type="text"
+                            name="nome"
+                            value={productData.nome}
+                            onChange={handleChange}
+                            required
+                            placeholder=" "
+                            className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-[#dbdbdb] appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black peer"
+                        />
+                        <label htmlFor="nome" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-black peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+                            Nome do Produto
+                        </label>
                     </div>
 
                     <div className="relative">
-                        <input id="descricao"
+                        <input
+                            id="descricao"
                             name="descricao"
                             value={productData.descricao}
-                            onChange={handleChange as any} 
+                            onChange={handleChange as any}
                             required
-                            placeholder=' '
-                            className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-[#dbdbdb] appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black peer"/>
-                        <label htmlFor="descricao" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Descrição</label>
+                            placeholder=" "
+                            className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-[#dbdbdb] appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black peer"
+                        />
+                        <label htmlFor="descricao" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+                            Descrição
+                        </label>
                     </div>
 
-                    <div className='relative'>
+                    <div className="relative">
                         <input
                             id="preco"
                             type="text"
@@ -109,35 +118,38 @@ export const Register: React.FC = () => {
                             min="0.01"
                             step="0.01"
                             required
-                            placeholder=' '
+                            placeholder=" "
                             className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-[#dbdbdb] appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black peer"
                         />
-                        <label htmlFor="preco" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Preço: </label>
+                        <label htmlFor="preco" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+                            Preço:
+                        </label>
                     </div>
 
-                    <div className='relative'>
+                    <div className="relative">
                         <input
                             id="categoriaId"
                             type="number"
                             name="categoriaId"
-                            value={productData.categoriaId  === 0 ? '' : productData.categoriaId}
+                            value={productData.categoriaId === 0 ? '' : productData.categoriaId}
                             onChange={handleChange}
-                            placeholder=' '
+                            placeholder=" "
                             min="1"
                             required
                             className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-[#dbdbdb] appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-black peer"
                         />
-                        <label htmlFor="categoriaId" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Categoria ID: </label>
+                        <label htmlFor="categoriaId" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-black peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
+                            Categoria ID:
+                        </label>
                     </div>
-                    
-                    <button 
-                        type="submit" 
+
+                    <button
+                        type="submit"
                         disabled={loading}
-                        className={`w-full py-2 px-4 rounded-md text-black hover:text-white font-semibold transition duration-200 ${
-                            loading 
-                            ? 'bg-gray-400 cursor-not-allowed' 
-                            : ' border border-black  hover:bg-black focus:outline-none focus:ring-2  focus:ring-offset-2'
-                        }`}
+                        className={`w-full py-2 px-4 rounded-md text-sm sm:text-base text-black hover:text-white font-semibold transition duration-200 ${loading
+                                ? 'bg-gray-400 cursor-not-allowed'
+                                : 'border border-black hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2'
+                            }`}
                     >
                         {loading ? 'Criando...' : 'Postar Produto'}
                     </button>
