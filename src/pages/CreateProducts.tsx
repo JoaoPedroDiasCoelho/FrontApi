@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { productApi, Product } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 
 type NewProductData = Omit<Product, 'id' | 'categoriaNome' | 'name' | 'description' | 'price' | 'category' | 'stock' | 'imageUrl'> & {
     nome: string;
@@ -18,6 +19,7 @@ const initialProductState: NewProductData = {
 export const Register: React.FC = () => {
     const [productData, setProductData] = useState<NewProductData>(initialProductState);
     const [loading, setLoading] = useState(false);
+    const { isAuthenticated } = useAuth();
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
 
@@ -55,6 +57,7 @@ export const Register: React.FC = () => {
 
     return (
         <div className='flex w-full justify-center items-center min-h-[650px] bg-[#f3f3f3]'>
+            {isAuthenticated ? (
             <div className="bg-white shadow-2xl rounded-lg p-10">
                 <h2 className="text-3xl font-bold text-gray-800 mb-6 border-b pb-2 text-center">Cadastrar Novo Produto</h2>
 
@@ -143,6 +146,13 @@ export const Register: React.FC = () => {
                     </button>
                 </form>
             </div>
+            ) : (
+                <div className="bg-white shadow-2xl rounded-lg p-10 text-center">
+                    <h2 className="text-3xl font-bold text-red-600 mb-4">NAO VAI SUBIR NINGUEM✌🏾✌🏾✌🏾</h2>
+                    <p className="text-lg text-gray-700">Você precisa estar logado para cadastrar novos produtos.</p>
+                </div>
+            )}
         </div>
+        
     );
 };

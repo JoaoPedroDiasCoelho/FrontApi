@@ -15,7 +15,7 @@ export function Login() {
         setError('');
         
         if (login(username, password)) {
-            navigate('/dashboard', { replace: true });
+            navigate('/', { replace: true });
         } else {
             setError('Usuário ou senha inválidos.');
             async function minhaFuncao() {
@@ -24,23 +24,24 @@ export function Login() {
                 console.log('Terminou após 2 segundos.');
             }
         }
+
     };
 
     return (
         <div className='bg-black flex flex-col justify-center items-center h-[650px]'>
             <div className='bg-white shadow-md p-6 rounded-lg'>
-                <h2 className='text-[32px] text-center'> Login</h2>
+                <h2 className='text-[32px] text-center'>Login</h2>
                 <form onSubmit={handleSubmit} className='h-[200px] flex flex-col justify-around'>
                     <input
                         type="text"
-                        placeholder="Usuário (admin)"
+                        placeholder="Usuário"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         className='w-full p-2 border rounded-lg border-[#161616]'
                     />
                     <input
                         type="password"
-                        placeholder="Senha (123)"
+                        placeholder="Senha"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         className='w-full p-2 border rounded-lg border-[#161616]'

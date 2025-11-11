@@ -6,7 +6,6 @@ import NotFound from '@/pages/NotFound';
 import Index from '@/pages/Index';
 import { Login } from '@/pages/Login';
 import { AuthProvider, Protected } from '@/context/AuthContext';
-import Dashboard from '@/pages/Dashboard';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Register } from '@/pages/CreateProducts';
@@ -25,15 +24,6 @@ export function Rotas() {
                     <Route path="/login" element={<Login />} />
 
                     <Route path='/cart' element={<Cart />} />
-
-                    <Route 
-                        path="/dashboard" 
-                        element={
-                            <Protected>
-                                <Dashboard />
-                            </Protected>
-                        } 
-                    />
 
                     <Route path='/register' element={<Register/>}/>
                     

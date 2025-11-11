@@ -1,5 +1,5 @@
 import { ShoppingCart } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Product } from '@/services/api';
@@ -7,6 +7,8 @@ import { useCart } from '@/hooks/useCart';
 import { toast } from 'sonner';
 import { useEffect, useState } from 'react';
 import { searchImageForQuery } from '@/services/imageApi';
+import DeleteButton from '@/pages/DeleteProduct';
+import { useAuth } from '@/context/AuthContext';
 
 interface ProductCardProps {
   product: Product;
@@ -16,11 +18,19 @@ const imageCache = new Map<string, string | null>();
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const addItem = useCart((state) => state.addItem);
-
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault();
-    addItem(product);
-    toast.success('Produto adicionado ao carrinho!');
+    if(isAuthenticated){
+      e.preventDefault();
+      addItem(product);
+      toast.success('Produto adicionado ao carrinho!');
+    }
+    else{
+      navigate('/login');
+      alert("IRMAO VC NAO TA LOGADO");
+    }
+   
   };
 
   const [imgUrl, setImgUrl] = useState<string | undefined>(product?.imageUrl || undefined);
@@ -62,8 +72,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
     );
   }
   return (
-    <Link to={`/product/${product.id}`}>
+    
       <Card className="group h-full overflow-hidden transition-all hover:shadow-lg animate_animated animate_fade-in">
+        <Link to={`/product/${product.id}`}>
         <div className="aspect-square overflow-hidden bg-muted">
           {imgUrl ? (
             <img
@@ -89,7 +100,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             R$ {product.preco.toFixed(2)}
           </p>
         </CardContent>
-        
+      </Link> 
         <CardFooter className="p-4 pt-0">
           <Button
             onClick={handleAddToCart}
@@ -99,9 +110,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
             <ShoppingCart className="mr-2 h-4 w-4" />
             Adicionar
           </Button>
+          <DeleteButton productId={product.id} productName={product.nome} onDeleteSucess/>
         </CardFooter>
       </Card>
-    </Link>
+    
   );
 };
 
