@@ -10,11 +10,13 @@ import { useCart } from '@/hooks/useCart';
 import { toast } from 'sonner';
 import { useState, useEffect } from 'react';
 import { searchImageForQuery, imageCache } from '@/services/imageApi';
+import { useAuth } from '@/context/AuthContext';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const addItem = useCart((state) => state.addItem);
+  const {isAuthenticated} = useAuth();
   const [quantity, setQuantity] = useState(1);
 
   const { data: product, isLoading } = useQuery({
@@ -46,9 +48,12 @@ const ProductDetail = () => {
   }, [product, imgUrl]);
 
   const handleAddToCart = () => {
-    if (product) {
+    if (isAuthenticated) {
       addItem(product, quantity);
       toast.success(`${quantity} ${quantity > 1 ? 'itens adicionados' : 'item adicionado'} ao carrinho!`);
+    }
+    else{
+      alert("VOCE NAO TA LOGADO")
     }
   };
 

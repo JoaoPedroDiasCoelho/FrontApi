@@ -16,7 +16,7 @@ const Footer = () => {
                 </a>
             </div>
             <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-300 lg:my-8" />
-            <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://flowbite.com/" className="hover:underline">Desenvolvido por: João Pedro Dias Coelho</a>.</span>
+            <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 Desenvolvido por: Grupo 6.</span>
         </div>
     </footer>
   );

@@ -74,14 +74,16 @@ export const productApi = {
         return response.json();
     },
 
-    remove: async (id: number): Promise<Product> => {
+    delete: async (id: number): Promise<void> => { 
         const response = await fetch(`${API_BASE_URL}/products/${id}`, {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(null),
+            method: 'DELETE'
         });
-        if (!response.ok) throw new Error('Failed to delete product');
-        return response.json();
+
+        if (!response.ok) {
+            const errorDetail = await response.text(); 
+            console.error('Detalhe do erro do servidor:', errorDetail);
+            throw new Error(`Failed to delete product. Server response: ${errorDetail}`);
+        }
     },
 };
 
