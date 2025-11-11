@@ -2,7 +2,6 @@ import { Trash2, ShoppingBag, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import { useCart } from '@/hooks/useCart';
 
 
@@ -136,9 +135,7 @@ const Cart = () => {
                     <span>Frete</span>
                     <span>Grátis</span>
                   </div>
-
-                  <Separator />
-
+                  
                   <div className="flex justify-between text-xl font-bold">
                     <span>Total</span>
                     <span className="text-primary">R$ {total().toFixed(2)}</span>

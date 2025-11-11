@@ -11,6 +11,7 @@ import Footer from '@/components/Footer';
 import { Register } from '@/pages/CreateProducts';
 import ProductDetail from '@/pages/ProductDetail';
 import Cart from '@/pages/Cart';
+import VLibras from '@djpfs/react-vlibras';
 
 export function Rotas() {
     return (
@@ -32,7 +33,9 @@ export function Rotas() {
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             <Footer />
+            <VLibras forceOnload={true} />
             </BrowserRouter>
         </AuthProvider>
+        
     );
 }
