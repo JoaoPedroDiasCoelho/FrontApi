@@ -1,23 +1,59 @@
-import { ShoppingCart, Store } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { useCart } from '@/hooks/useCart';
+import { FaInstagram, FaPinterest, FaTiktok, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
-  const itemCount = useCart((state) => state.itemCount());
-
   return (
-    <footer className="bg-white border-t-1 shadow-sm">
-        <div className="w-full max-w-screen-xl mx-auto p-4 md:py-10">
-            <div className="sm:flex sm:items-center sm:justify-between">
-                <a href="https://flowbite.com/" className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                    <h1 className='text-black font-bold text-[24px]'>eCommerce</h1>
-                </a>
-            </div>
-            <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-300 lg:my-8" />
-            <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 Desenvolvido por: Grupo 6.</span>
+    <footer className="bg-white text-gray-800 border-t shadow-sm">
+      <div className="w-full max-w-screen-xl mx-auto p-6 md:py-10">
+      
+        <div className="sm:flex sm:items-center sm:justify-between">
+          <h1 className="font-bold text-[24px]">eCommerce</h1>
         </div>
+
+      
+        <div className="flex flex-wrap justify-center gap-6 mt-6 text-sm text-gray-600">
+          <a
+            href="https://dontpad.com/trabalhofinalSerratec2025/2"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-black transition"
+          >
+            POLÍTICA DE PRIVACIDADE
+          </a>
+          <a
+            href="https://dontpad.com/trabalhofinalSerratec2025/2"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-black transition"
+          >
+            ENVIO & PAGAMENTOS
+          </a>
+        </div>
+
+    
+        <div className="flex justify-center gap-5 mt-6 text-gray-600 text-xl">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition">
+            <FaInstagram />
+          </a>
+          <a href="https://br.pinterest.com/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition">
+            <FaPinterest />
+          </a>
+          <a
+            href="https://www.tiktok.com/login?redirect_url=https%3A%2F%2Fwww.tiktok.com%2Fpt-BR%2F&lang=en&enter_method=mandatory"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-black transition"
+          >
+            <FaTiktok />
+          </a>
+          <a href="https://x.com/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition">
+            <FaTwitter />
+          </a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition">
+            <FaYoutube />
+          </a>
+        </div>
+
+      </div>
     </footer>
   );
 };

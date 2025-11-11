@@ -4,85 +4,78 @@ import { useNavigate } from 'react-router-dom';
 import { User, Lock } from 'lucide-react';
 
 export function Login() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const { login } = useAuth();
-    const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError('');
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
 
-        if (login(username, password)) {
-            navigate('/', { replace: true });
-        } else {
-            setError('Usuário ou senha inválidos.');
-            async function minhaFuncao() {
-                console.log('Começou...');
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                console.log('Terminou após 2 segundos.');
-            }
-        }
+    if (login(username, password)) {
+      navigate('/', { replace: true });
+    } else {
+      setError('Usuário ou senha inválidos.');
+    }
+  };
 
-    };
-
-    return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-700 via-gray-900 to-black px-4">
-            <div className="relative w-full max-w-md">
-                {/* Ícone flutuante maior */}
-                <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-gray-300 rounded-full p-6 shadow-lg">
-                    <User className="h-10 w-10 text-gray-700" />
-                </div>
-
-                {/* Card de login */}
-                <div className="bg-white rounded-xl shadow-lg p-8 pt-20">
-                    <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
-
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        <div className="relative">
-                            <User className="absolute left-3 top-3 text-gray-400 h-5 w-5" />
-                            <input
-                                type="text"
-                                placeholder="Usuário"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-700"
-                            />
-                        </div>
-
-                        <div className="relative">
-                            <Lock className="absolute left-3 top-3 text-gray-400 h-5 w-5" />
-                            <input
-                                type="password"
-                                placeholder="Senha"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-700"
-                            />
-                        </div>
-
-                        {/* Lembrar de mim */}
-                        <div className="flex items-center text-sm text-gray-600">
-                            <label className="flex items-center gap-2">
-                                <input type="checkbox" className="accent-gray-700" />
-                                Lembrar de mim
-                            </label>
-                        </div>
-
-                        <button
-                            type="submit"
-                            className="w-full bg-gray-800 text-white py-2 rounded-lg hover:bg-black transition"
-                        >
-                            ENTRAR
-                        </button>
-                    </form>
-
-                    {error && (
-                        <p className="text-red-600 mt-4 text-sm text-center">{error}</p>
-                    )}
-                </div>
-            </div>
+  return (
+    <div className="min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-gray-700 via-gray-900 to-black px-4 relative">
+      <div className="relative w-full max-w-md z-10">
+        {/* Ícone flutuante com z-index alto */}
+        <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-md rounded-full p-6 shadow-xl border border-white/30 z-20">
+          <User className="h-10 w-10 text-white" />
         </div>
-    );
+
+        {/* Card com efeito vidro e z-index baixo */}
+        <div className="rounded-xl shadow-2xl p-8 pt-20 bg-white/10 backdrop-blur-lg border border-white/30 text-white z-10">
+          <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="flex items-center bg-white/5 border border-white/30 rounded-lg px-3 py-2">
+              <User className="text-white/70 h-5 w-5 mr-2" />
+              <input
+                type="text"
+                placeholder="Usuário"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="bg-transparent w-full text-white placeholder-white/50 text-sm focus:outline-none"
+              />
+            </div>
+
+            <div className="flex items-center bg-white/5 border border-white/30 rounded-lg px-3 py-2">
+              <Lock className="text-white/70 h-5 w-5 mr-2" />
+              <input
+                type="password"
+                placeholder="Senha"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="bg-transparent w-full text-white placeholder-white/50 text-sm focus:outline-none"
+              />
+            </div>
+
+            <div className="flex items-center text-sm text-white/80">
+              <label className="flex items-center gap-2">
+                <input type="checkbox" className="accent-white" />
+                Lembrar de mim
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-white/20 hover:bg-white/30 text-white py-2 rounded-lg transition"
+            >
+              ENTRAR
+            </button>
+          </form>
+
+          {error && (
+            <p className="text-red-400 mt-4 text-sm text-center">{error}</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
