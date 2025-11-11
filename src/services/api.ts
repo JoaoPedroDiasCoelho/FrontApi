@@ -1,4 +1,3 @@
-// API service layer for Spring backend
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8081/api';
 
 export interface PageResponse<T> {
@@ -43,15 +42,26 @@ export interface PaginationParams {
     size?: number;
 }
 
+export interface ProductQueryParams extends PaginationParams {
+    category?: string;
+    nameQuery?: string;
+}
  
 export const productApi = {
 
-    getAll: async (params: PaginationParams = {}): Promise<PageResponse<Product>> => {
+    getAll: async (params: ProductQueryParams = {}): Promise<PageResponse<Product>> => {
         
         const url = new URL(`${API_BASE_URL}/products`);
         
         if (params.page !== undefined) url.searchParams.append('page', params.page.toString());
         if (params.size !== undefined) url.searchParams.append('size', params.size.toString());
+
+        if (params.category) {
+            url.searchParams.append('category', params.category);
+        }
+        if (params.nameQuery) {
+            url.searchParams.append('nome', params.nameQuery);
+        }
 
         const response = await fetch(url.toString());
         if (!response.ok) throw new Error('Failed to fetch products');
@@ -81,13 +91,11 @@ export const productApi = {
 
         if (!response.ok) {
             const errorDetail = await response.text(); 
-            console.error('Detalhe do erro do servidor:', errorDetail);
             throw new Error(`Failed to delete product. Server response: ${errorDetail}`);
         }
     },
 };
 
-// Order API
 export const orderApi = {
     create: async (order: Omit<Order, 'id' | 'createdAt'>): Promise<Order> => {
         const response = await fetch(`${API_BASE_URL}/orders`, {

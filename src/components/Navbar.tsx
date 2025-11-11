@@ -1,7 +1,6 @@
-import { ShoppingCart, Store } from 'lucide-react';
+import { Badge, ShoppingCart, Store } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { useCart } from '@/hooks/useCart';
 import { useAuth } from '@/context/AuthContext';
 

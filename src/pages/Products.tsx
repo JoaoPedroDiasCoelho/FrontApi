@@ -1,28 +1,40 @@
-import { useState } from 'react'; // 1. Importar useState
+import { useState, useCallback } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { productApi, PageResponse, Product } from '@/services/api'; 
-import ProductCard from '@/components/ProductCard';
-import { Skeleton } from '@/components/ui/skeleton';
+import { productApi, PageResponse, Product, ProductQueryParams } from '../services/api'; 
+import ProductCard from '../components/ProductCard';
+import { Skeleton } from '../components/ui/skeleton';
 import { AlertCircle } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Button } from '@/components/ui/button';
+import { Button } from '../components/ui/button';
+import { Alert, AlertDescription, AlertTitle } from '../components/ui/alert';
+import SearchInput from '@/components/ui/searchInput';
 
-const PAGE_SIZE = 8; 
+const PAGE_SIZE = 12; 
 
 const Products = () => {
     const [currentPage, setCurrentPage] = useState(0); 
+    const [searchTerm, setSearchTerm] = useState(''); 
+    const [categoryFilter, setCategoryFilter] = useState(''); 
+
+   const handleSearch = useCallback((newSearchTerm: string) => {
+    setSearchTerm(newSearchTerm);
+    setCurrentPage(0); 
+    }, []);
+
+    const queryParams: ProductQueryParams = {
+        page: currentPage, 
+        size: PAGE_SIZE,
+        nameQuery: searchTerm,
+        category: categoryFilter,
+    };
 
     const { 
         data: pageData, 
         isLoading, 
         error 
     } = useQuery<PageResponse<Product>>({
-        queryKey: ['products', currentPage, PAGE_SIZE], 
+        queryKey: ['products', currentPage, PAGE_SIZE, searchTerm, categoryFilter], 
         queryFn: async () => {
-            const response = await productApi.getAll({ 
-                page: currentPage, 
-                size: PAGE_SIZE 
-            });
+            const response = await productApi.getAll(queryParams);
             
             const products = response.content.map(product => ({
                 ...product,
@@ -70,9 +82,19 @@ const Products = () => {
                 </div>
             </div>
 
-            <div className="container my-20">
+            <div className="container my-12">
+                <div className="mb-8 flex flex-col gap-4 md:flex-row md:justify-between">
+                    
+                    <div className="md:w-1/3">
+                        <SearchInput 
+                            onSearch={handleSearch} 
+                            placeholder="Buscar por nome..."
+                        />
+                    </div>
+                </div>
+
                 {isLoading && !pageData ? ( 
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  ">
+                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {[...Array(PAGE_SIZE)].map((_, i) => (
                             <div key={i} className="space-y-4">
                                 <Skeleton className="aspect-square w-full" />
@@ -83,7 +105,7 @@ const Products = () => {
                     </div>
                 ) : productsList.length > 0 ? ( 
                     <>
-                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                             {productsList.map((product) => ( 
                                 <ProductCard key={product.id} product={product} />
                             ))}
@@ -109,13 +131,12 @@ const Products = () => {
                             >
                                 Próximo
                             </Button>
-                            
                         </div>
                     </>
                 ) : (
                     <div className="py-12 text-center">
                         <p className="text-lg text-muted-foreground">
-                            Nenhum produto disponível no momento.
+                            Nenhum produto encontrado com os filtros atuais.
                         </p>
                     </div>
                 )}

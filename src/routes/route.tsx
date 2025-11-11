@@ -37,6 +37,5 @@ export function Rotas() {
             <VLibras forceOnload={true} />
             </BrowserRouter>
         </AuthProvider>
-
     );
 }
