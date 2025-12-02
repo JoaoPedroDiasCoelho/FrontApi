@@ -1,0 +1,38 @@
+import React, { useState } from 'react';
+import './header.css';
+import logoImg from '../../assets/images/logo.png';
+import bell from '../../assets/images/bell.png'
+
+const Header: React.FC = () => {
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+
+  return (
+    <header className="header">
+      <div className="header-left">
+        <img src={logoImg} style={{height: 25}} alt="logo" />
+      </div>
+      <div className="header-right">
+        <div className="header-icon-wrapper">
+          <img className="header-icon" src={bell}/>
+          <span className="header-notification-dot"></span>
+        </div>
+        <div className="header-icon-wrapper">
+          <span className="header-icon">👤</span>
+          <span className="header-notification-dot"></span>
+        </div>
+        <div 
+          className="header-user-menu"
+          onClick={() => setShowProfileMenu(!showProfileMenu)}
+        >
+          <div className="header-user-info" style={{display: 'flex', alignItems: 'center'}}>
+            <span className="header-user-label">Usuário</span>
+            <span className="header-user-action">Ver Perfil</span>
+          </div>
+          <span className="header-chevron">▼</span>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
