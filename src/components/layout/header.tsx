@@ -9,11 +9,13 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="header-left">
-        <img src={logoImg} style={{height: 25}} alt="logo" />
+        <a href="/">
+          <img src={logoImg} style={{height: 25}} alt="logo" />
+        </a>
       </div>
       <div className="header-right">
         <div className="header-icon-wrapper">
-          <img className="header-icon" src={bell}/>
+          <img className="header-icon" src={bell} alt="Notificações"/>
           <span className="header-notification-dot"></span>
         </div>
         <div className="header-icon-wrapper">
