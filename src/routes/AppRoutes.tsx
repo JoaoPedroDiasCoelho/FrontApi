@@ -9,13 +9,14 @@ import HowItWorks from '../pages/Help';
 import SuportPage from '../pages/SuportPage';
 import PaginaPrincipalComNotificacoes from '../pages/ReportDetailsPage';
 import PrivacyPolicy from '../pages/PrivacyPolicy';
+import LoginPage from '../pages/LoginPage';
 
 function AppRoutes() {
   return (
     <BrowserRouter>
     <Header />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/avaliacao-90" element={<div>Página de Avaliação 90°</div>} />
         <Route path="/avaliacao-360" element={<div>Página de Avaliação 360°</div>} />
         <Route path="/relatorios" element={<PaginaPrincipalComNotificacoes />} />
@@ -25,6 +26,7 @@ function AppRoutes() {
         <Route path="/suporte" element={<SuportPage />} />
         <Route path="/privacidade" element={<PrivacyPolicy />} />
         <Route path="/termos" element={<SuportPage />} />
+        <Route path="/" element={<LoginPage />} />
         
       </Routes>
       <Footer />
