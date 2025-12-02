@@ -7,7 +7,7 @@ const Header: React.FC = () => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   return (
-    <header className="header">
+    <header className="header" style={{border: "1px solid #c5c5c5"}}>
       <div className="header-left">
         <a href="/">
           <img src={logoImg} style={{height: 25}} alt="logo" />
@@ -19,7 +19,7 @@ const Header: React.FC = () => {
           <span className="header-notification-dot"></span>
         </div>
         <div className="header-icon-wrapper">
-          <span className="header-icon">👤</span>
+          <a href='/perfil' className="header-icon">👤</a>
           <span className="header-notification-dot"></span>
         </div>
         <div 
