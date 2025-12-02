@@ -1,46 +1,38 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🚀 FLOWBACK - Sistema de Avaliação de Desempenho
 
-## Available Scripts
+O **FLOWBACK** é uma plataforma web que centraliza e padroniza o processo de avaliação de desempenho, eliminando a dependência de planilhas. Ele foi projetado para garantir a **segurança** dos dados, a **confidencialidade** (anonimato na avaliação $360^{\circ}$) e a **eficiência** de todo o processo
 
-In the project directory, you can run:
+O objetivo principal é promover o desenvolvimento de pessoas e servir de base para promoções e decisões estratégicas[cite: 8].
 
-### `npm start`
+## ✨ O Que o FLOWBACK Faz
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+O sistema gerencia dois tipos principais de avaliação, com comunicações automáticas (e-mail, Teams e na plataforma) para lembrar prazos[cite: 12, 19]:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* **Avaliação $90^{\circ}$ (Mensal):** Do gestor para o colaborador[cite: 8]. [cite_start]É usada como base para as promoções[cite: 9].
+* **Avaliação $360^{\circ}$ (Semestral):** Avaliação de superiores, pares, e do colaborador para os gestores/diretores[cite: 8]. [cite_start]É focada no desenvolvimento pessoal e profissional[cite: 10].
 
-### `npm test`
+## 📊 Relatórios e Apoio Estratégico
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Um diferencial fundamental do FLOWBACK é a consolidação de resultados em um ambiente único[cite: 21]. [cite_start]A plataforma facilita a geração de relatórios para diferentes níveis hierárquicos[cite: 6]:
 
-### `npm run build`
+| Usuário | Tipo de Relatório | Objetivo |
+| :--- | :--- | :--- |
+| **Gestores** | Informações gerais e relatórios resumidos da equipe[cite: 6]. | Acompanhamento do desenvolvimento dos colaboradores. |
+| **Diretoria/CEO** | Relatórios mais detalhados e completos[cite: 6]. | [cite_start]Suporte direto às decisões estratégicas[cite: 6]. |
+| **Benefício Adicional** | O sistema garante o registro e a atualização do **histórico anual** das avaliações, assegurando a rastreabilidade e transparência do processo[cite: 14]. |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🧠 Tecnologia e Diferenciais (MVP)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* **Recurso de IA:** Uso de inteligência artificial para melhorar a redação dos comentários de feedback, garantindo um tom mais corporativo e construtivo sem perder o sentido[cite: 5, 13].
+* **Segurança:** A camada hierárquica de acesso garante que apenas os responsáveis diretos tenham visibilidade das informações que lhes cabem[cite: 20].
+* **Base:** Sistema de avaliação de desempenho parametrizável, baseado em servidor web[cite: 12].
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 💻 Como Executar
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+A aplicação é um *Front-end* em React/TypeScript.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1.  **Instalação de dependências:** `npm install` (ou `yarn install`)
+2.  **Execução:** `npm start` (ou `yarn start`)
