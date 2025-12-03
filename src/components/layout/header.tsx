@@ -19,7 +19,7 @@ const Header: React.FC = () => {
           <span className="header-notification-dot"></span>
         </div>
         <div className="header-icon-wrapper">
-          <a href='/perfil' className="header-icon">👤</a>
+          <a href='/perfil' className="material-symbols-outlined" style={{fill: "#000", color: "#000", textDecoration: "none"}}>person</a>
           <span className="header-notification-dot"></span>
         </div>
         <div 

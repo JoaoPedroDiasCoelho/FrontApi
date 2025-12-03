@@ -11,8 +11,7 @@ const mockUserData = {
 };
 
 const primaryColor = '#209995'; 
-const darkBackground = '#2c3e50'; // Fundo do sidebar
-const lightGrayBackground = '#ecf0f1'; // Fundo da área de conteúdo
+const lightGrayBackground = '#ecf0f1';
 const sidebarWidth = '250px'; 
 const textColor = '#343a40';
 const labelColor = '#6c757d';
@@ -27,7 +26,7 @@ const ProfileContent = () => {
         setor 
     } = mockUserData;
 
-    const cardStyle = {
+    const cardStyle: React.CSSProperties = {
         backgroundColor: 'white',
         borderRadius: '8px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.05)',
@@ -36,7 +35,7 @@ const ProfileContent = () => {
         padding: '30px',
     };
     
-    const avatarStyle = {
+    const avatarStyle: React.CSSProperties = {
         width: '120px',
         height: '120px',
         borderRadius: '50%',
@@ -45,7 +44,7 @@ const ProfileContent = () => {
         border: `3px solid ${primaryColor}`,
     };
 
-    const sectionHeaderStyle = {
+    const sectionHeaderStyle: React.CSSProperties = {
         fontSize: '1.25rem',
         fontWeight: '600',
         color: primaryColor,
@@ -55,20 +54,20 @@ const ProfileContent = () => {
         marginTop: '30px',
     };
 
-    const fieldGroupStyle = {
-        marginBottom: '15px',
+    const fieldGroupStyle: React.CSSProperties = {
+        marginBottom: 15,
         display: 'flex',
         flexDirection: 'column',
     };
 
-    const labelStyle = {
+    const labelStyle: React.CSSProperties = {
         fontSize: '0.9rem',
         fontWeight: '500',
         color: labelColor,
         marginBottom: '4px',
     };
 
-    const valueStyle = {
+    const valueStyle: React.CSSProperties = {
         fontSize: '1.0rem',
         fontWeight: '400',
         color: textColor,
@@ -138,14 +137,14 @@ const ProfileContent = () => {
 
 const ProfilePageLayout = () => {
     
-    const dashboardContainerStyle = {
+    const dashboardContainerStyle: React.CSSProperties = {
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
         display: 'flex',
         minHeight: '100vh',
         backgroundColor: lightGrayBackground,
     };
 
-    const mainContentStyle = {
+    const mainContentStyle: React.CSSProperties = {
         flexGrow: 1,
         marginLeft: sidebarWidth,
         padding: '30px',

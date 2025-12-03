@@ -9,10 +9,10 @@ import check from '../assets/images/check.svg'
 import { useNavigate } from 'react-router-dom';
 
 const userStatus = {
-    status: 'sem_pendencias', 
+    status: 'pendencia_90', 
 };
 
-const getNotificationText = (status : { }) => {
+const getNotificationText = (status: any): any => {
     switch (status) {
         case 'sem_pendencias':
             return {
@@ -56,7 +56,7 @@ const getNotificationText = (status : { }) => {
 };
 
 
-const NotificacaoHistorico = ({ isVisible, onClose }: { isVisible: boolean, onClose: boolean }) => {
+const NotificacaoHistorico = ({ isVisible, onClose }: { isVisible: boolean, onClose: () => void }) => {
     if (!isVisible) return null;
 
     const historicoData = [
@@ -76,7 +76,7 @@ const NotificacaoHistorico = ({ isVisible, onClose }: { isVisible: boolean, onCl
         transition: 'background-color 0.2s',
     };
 
-    const formatTimestamp = (isoString : { isoString: string}) => {
+    const formatTimestamp = (isoString: string) => {
         const date = new Date(isoString);
         return date.toLocaleDateString('pt-BR') + ' ' + date.toLocaleTimeString('pt-BR').substring(0, 5); // RF11
     };
@@ -85,7 +85,7 @@ const NotificacaoHistorico = ({ isVisible, onClose }: { isVisible: boolean, onCl
         <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 2000 }}>
             <div style={{ backgroundColor: 'white', padding: '30px', borderRadius: '10px', maxWidth: '700px', width: '90%', maxHeight: '85%', overflowY: 'auto', position: 'relative', fontFamily: 'sans-serif' }}>
                 <h3 style={{ margin: '0 0 20px 0', color: '#0a6377', fontSize: '24px' }}>Histórico de Notificações</h3>
-                <button onClick={onClose} style={{ position: 'absolute', top: '20px', right: '20px', background: 'none', border: 'none', fontSize: '1.8rem', cursor: 'pointer', color: '#666' }}>
+                <button onClick={() => onClose()} style={{ position: 'absolute', top: '20px', right: '20px', background: 'none', border: 'none', fontSize: '1.8rem', cursor: 'pointer', color: '#666' }}>
                     <span className="material-icons">close</span>
                 </button>
 
