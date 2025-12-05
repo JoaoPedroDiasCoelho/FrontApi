@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const loggedUser = {
   id: 132,
-  cargo: 'Colaborador',
+  cargo: 'COORDENADORES',
   setor: 'FISCAL',
 };
 
