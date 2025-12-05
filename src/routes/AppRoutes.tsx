@@ -11,6 +11,7 @@ import PrivacyPolicy from '../pages/PrivacyPolicy';
 import LoginPage from '../pages/LoginPage';
 import ProfilePageLayout from '../pages/Profile';
 import EvaluationScreen from '../pages/Evaluation90Page';
+import Evaluation360Screen from '../pages/Evaluation360Page';
 
 function AppRoutes() {
   return (
@@ -19,7 +20,7 @@ function AppRoutes() {
       <Routes>
         <Route path="/home" element={<HomePage />} />
         <Route path="/avaliacao-90" element={<EvaluationScreen />} />
-        <Route path="/avaliacao-360" element={<div>Página de Avaliação 360°</div>} />
+        <Route path="/avaliacao-360" element={<Evaluation360Screen />} />
         <Route path="/relatorios" element={<div>Página de Avaliação 360°</div>} />
         <Route path="/admin" element={<div>Painel do Administrador</div>} />
         <Route path="/beneficio" element={<FlowbackBenefits />} />
